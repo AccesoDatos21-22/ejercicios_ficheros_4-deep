@@ -32,12 +32,14 @@ import org.xml.sax.SAXException;
 
 import com.thoughtworks.xstream.XStream;
 
+import dao.MedicamentoAleatorio;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import modelo.Empleado;
 import modelo.Empresa;
+import modelo.Medicamento;
 
 class Main {
 
@@ -51,6 +53,15 @@ class Main {
 		// ejemploLeerDOM();
 		// ejemploEscribirXSTREAM();
 		// ejemploLeerXSTREAM();
+		
+		MedicamentoAleatorio me = new MedicamentoAleatorio();
+		Medicamento md1=new Medicamento(0,"Paracetamol", 23, 45, 109, 1, 0);
+		Medicamento md2=new Medicamento(1,"Ibruprofeno", 16, 23, 140, 2, 1);
+		Medicamento md3=new Medicamento(2,"Acelerator", 10, 25, 137, 4, 0);
+		me.guardar(md1);
+		me.guardar(md2);
+		me.guardar(md3);
+		System.out.println(me.buscar("Ibruprofeno").toString());
 	}
 
 	private static void ejemploEscribirXSTREAM() {
