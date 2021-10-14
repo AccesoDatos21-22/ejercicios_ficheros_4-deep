@@ -3,6 +3,7 @@ package modelo;
 import java.beans.JavaBean;
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.Objects;
 
 public class Medicamento implements Serializable {
 	
@@ -17,9 +18,7 @@ public class Medicamento implements Serializable {
 	private int codProveedor; // 4 bytes
 
 	public Medicamento(String nombre, double precio, int cod, int stock, int stockMaximo, int stockMinimo, int codProveedor) {
-		StringBuilder name=new StringBuilder(nombre);
-		name.setLength(50);
-		this.nombre = name.toString();
+		this.nombre = nombre;
 		this.precio = precio;
 		this.cod = cod;
 		this.stock = stock;
@@ -32,13 +31,12 @@ public class Medicamento implements Serializable {
 	}
 
 	public String getNombre() {
-		return nombre;
+		StringBuilder name=new StringBuilder(nombre);
+		name.setLength(30);
+		return name.toString();
 	}
 
 	public void setNombre(String nombre) {
-		if (nombre.length()>50){
-			throw new IllegalArgumentException(nombre+" contiene mas caracteres de los permitidos");
-		}
 		this.nombre = nombre;
 	}
 
@@ -47,7 +45,8 @@ public class Medicamento implements Serializable {
 	}
 
 	public void setPrecio(double precio) {
-		this.precio = Double.parseDouble(new DecimalFormat("##.##").format(precio));
+		double sinIVA=Double.parseDouble(new DecimalFormat("##.##").format(precio));
+		this.precio = (sinIVA+(sinIVA*IVA));
 	}
 
 	public int getCod() {
@@ -95,5 +94,13 @@ public class Medicamento implements Serializable {
 		return "Código: "+cod+ "\nNombre: "+nombre
 				+"\nPrecio: "+ precio+"€ \nStock: "
 				+ stock+"\nProveedor: "+codProveedor ;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		Medicamento that = (Medicamento) o;
+		return Double.compare(that.precio, precio) == 0 && cod == that.cod && stock == that.stock && stockMaximo == that.stockMaximo && stockMinimo == that.stockMinimo && codProveedor == that.codProveedor && Objects.equals(nombre, that.nombre);
 	}
 }
