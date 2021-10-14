@@ -30,7 +30,7 @@ public class Medicamento implements Serializable {
 
 	public String getNombre() {
 		StringBuilder sb = new StringBuilder(nombre);
-		sb.setLength(50);
+		sb.setLength(30);
 		return sb.toString();
 	}
 
