@@ -70,12 +70,13 @@ class Main {
 		Medicamento md5=new Medicamento(4,"Altori", 14, 5, 17, 5, 5);
 		me.guardar(md1);
 		me.guardar(md2);
-		me.guardar(md3);
-		me.guardar(md4);
-		me.guardar(md5);
-		System.out.println(me.borrar(md4));
-		System.out.println(me.borrar(md1));
-		System.out.println(me.borrar(md2));
+		System.out.println(me.actualizar(new Medicamento(0,"Paracacmol", 23, 45, 109, 1, 0)));
+//		me.guardar(md3);
+//		me.guardar(md4);
+//		me.guardar(md5);
+//		System.out.println(me.borrar(md4));
+//		System.out.println(me.borrar(md1));
+//		System.out.println(me.borrar(md2));
 //		System.out.println(me.buscar("Ibruprofeno").toString());
 		me.leerTodos().forEach(e->System.out.println(e));
 	}

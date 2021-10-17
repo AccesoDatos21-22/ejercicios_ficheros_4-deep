@@ -21,9 +21,11 @@ public class MedicamentoAleatorio implements MedicamentoDAO {
 		File archivo = new File(ruta);
 		try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
 
-			if (!archivo.exists())
+			if (!archivo.exists()) // Verificar si el archivo existe, y crearlos en caso que no.
 				archivo.createNewFile();
-			raf.seek(raf.length());
+
+			raf.seek(raf.length()); // Nos posicionamos al final del archivo.
+			// Por cada parametro, escribimos segun el tipo de dato.
 			raf.writeInt(medicamento.getCod());
 			raf.writeChars(medicamento.getNombre());
 			raf.writeDouble(medicamento.getPrecio());
@@ -46,8 +48,8 @@ public class MedicamentoAleatorio implements MedicamentoDAO {
 		int cod, stock, stockMaximo, stockMinimo, codProveedor;
 		try (RandomAccessFile raf = new RandomAccessFile(archivo, "r")) {
 
-			int numMedicamentos = (int) (raf.length() / TAM_REGISTRO);
-			for (int i = 0; i < numMedicamentos - 1; i++) {
+			int numMedicamentos = (int) (raf.length() / TAM_REGISTRO); // Calculamos el numero de medicamentos que existen.
+			for (int i = 0; i < numMedicamentos - 1; i++) { //Loopeamos todos los medicamentos hasta encontrarlo
 				nombreMed = "";
 				raf.seek(TAM_REGISTRO * (i));
 				cod = raf.readInt();
@@ -60,7 +62,7 @@ public class MedicamentoAleatorio implements MedicamentoDAO {
 				stockMaximo = raf.readInt();
 				stockMinimo = raf.readInt();
 				codProveedor = raf.readInt();
-				if (nombre.equals(nombreMed))
+				if (nombre.equals(nombreMed)) //si coincide, devolvemos un medicamento.
 					return new Medicamento(cod, nombreMed, precio, stock, stockMaximo, stockMinimo, codProveedor);
 			}
 
@@ -73,7 +75,30 @@ public class MedicamentoAleatorio implements MedicamentoDAO {
 
 	@Override
 	public boolean actualizar(Medicamento medicamento) {
+		File archivo = new File(ruta);
+		int cod;
+		try (RandomAccessFile raf = new RandomAccessFile(archivo, "rw")) {
 
+			int numMedicamentos = (int) (raf.length() / TAM_REGISTRO);
+			for (int i = 0; i < numMedicamentos - 1; i++) {
+				raf.seek(TAM_REGISTRO * (i));
+				cod = raf.readInt();
+				// Buscamos 
+				if (cod == medicamento.getCod()) {
+					raf.writeChars(medicamento.getNombre());
+					raf.writeDouble(medicamento.getPrecio());
+					raf.writeInt(medicamento.getStock());
+					raf.writeInt(medicamento.getStockMaximo());
+					raf.writeInt(medicamento.getStockMinimo());
+					raf.writeInt(medicamento.getCodProveedor());
+					return true;
+				}
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+
+		}
 		return false;
 	}
 
