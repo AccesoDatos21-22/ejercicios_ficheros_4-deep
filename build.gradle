@@ -27,7 +27,7 @@ dependencies {
     implementation 'com.google.guava:guava:28.0-jre'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'       
+    testImplementation 'junit:junit:4.12'
 
 	//implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.2'
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '3.0.0'
@@ -37,5 +37,9 @@ dependencies {
     
     // https://mvnrepository.com/artifact/xstream/xstream
 	implementation group: 'xstream', name: 'xstream', version: '1.2.2'
-    
+
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    test{
+        useJUnitPlatform()
+    }
 }
