@@ -20,12 +20,6 @@ class MedicamentoAleatorioTest {
     Medicamento md3=new Medicamento("Acelerator",23, 2, 25, 137, 4, 0);
     @Test
     public void testGuardarMedicamento(){
-//        try {
-//            Files.deleteIfExists(Paths.get(ruta));
-//        } catch (IOException e1) {
-//            // TODO Auto-generated catch block
-//            e1.printStackTrace();
-//        }
         assertTrue(ma.guardar(md1));
         assertTrue(ma.guardar(md2));
         assertTrue(ma.guardar(md3));
@@ -34,7 +28,6 @@ class MedicamentoAleatorioTest {
     @Test
     public void testBuscarMedicamento(){
         assertEquals(md1,ma.buscar("Paracetamol"));
-//        assertEquals(md2,ma.buscar("Ibuprofeno"));
         assertNotEquals(md3, ma.buscar("Acelerator"));
 
     }
@@ -42,15 +35,7 @@ class MedicamentoAleatorioTest {
     public void testActualizarMedicamento(){
         assertTrue(ma.actualizar(md1));
         assertTrue(ma.actualizar(md2));
-//        assertTrue(ma.actualizar(new Medicamento("No es Acelerator",23, 2, 25, 137, 4, 0)));
-    }
-    @Test
-    public void testLeerTodosMedicamentos(){
-        ArrayList<Medicamento> list=new ArrayList<>();
-        list.add(md1);
-        list.add(md2);
-        list.add(md3);
-        assertEquals(list,ma.leerTodos());
+        assertTrue(ma.actualizar(new Medicamento("No es Acelerator",23, 2, 25, 137, 4, 0)));
     }
     @Test
     public void testBorrarMedicamentos(){
