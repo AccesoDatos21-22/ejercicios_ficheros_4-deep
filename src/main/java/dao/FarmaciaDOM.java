@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
@@ -10,7 +12,6 @@ import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.TransformerFactoryConfigurationError;
@@ -20,30 +21,50 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
+import org.xml.sax.SAXException;
 
 import modelo.Farmacia;
 import modelo.Medicamento;
 
 public class FarmaciaDOM {
 
-	/**
-	 * Lee los medicamentos de la farmacia de un fichero xml mediante DOM
-	 * 
-	 * @param farmacia
-	 * @return
-	 */
 	public boolean leer(Path farmaciaXML) {
+		try {
+			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document document = builder.parse(new File("farmacia.xml"));
+			document.getDocumentElement().normalize();
+
+			NodeList medicamentos = document.getElementsByTagName("medicamento");
+			for (int i = 0; i < medicamentos.getLength(); i++) {
+				Node medi = medicamentos.item(i); 
+				if (medi.getNodeType() == Node.ELEMENT_NODE) {
+					Element elemento = (Element) medi;
+					System.out.println("Codigo: " + getNodo("cod", elemento));
+					System.out.println("Nombre Medicamento: " + getNodo("nombre", elemento));
+					System.out.println("Precio: " + getNodo("precio", elemento));
+					System.out.println("Stock: " + getNodo("stock", elemento));
+					System.out.println("Stock Maximo: " + getNodo("stock-maximo", elemento));
+					System.out.println("Stock Minimo: " + getNodo("stock-minimo", elemento));
+				}
+			}
+
+		} catch (ParserConfigurationException | SAXException | IOException e) {
+
+			System.err.println("error al leer el archivo XML");
+		}
 		return false;
 
 	}
 
-	/**
-	 * Guarda los medicamentos de la farmacia en un fichero XML mediamente DOM
-	 * 
-	 * @param farmacia
-	 * @return
-	 */
+	public static String getNodo(String etiqueta, Element elem) {
+		NodeList nodo = elem.getElementsByTagName(etiqueta)
+				.item(0).getChildNodes();
+		return nodo.item(0).getNodeValue();
+	}
 	public boolean guardar(Farmacia farmacia) {
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		try {
