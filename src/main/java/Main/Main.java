@@ -22,6 +22,9 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import dao.JCCPokemonJAXB;
+import modelo.JCCPokemon;
+import modelo.Pokemon;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -46,11 +49,16 @@ class Main {
 	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
 
 	public static void main(String[] args) {
+		JCCPokemon jccPokemon=new JCCPokemon();
 		// ejemploJaxb();
 		// ejemploEscribirDOM();
 		// ejemploLeerDOM();
 		// ejemploEscribirXSTREAM();
 		// ejemploLeerXSTREAM();
+		ArrayList<Pokemon>x=new ArrayList<>();
+		JCCPokemonJAXB j1 = new JCCPokemonJAXB();
+		j1.guardar(jccPokemon);
+		j1.leer();
 	}
 
 	private static void ejemploEscribirXSTREAM() {

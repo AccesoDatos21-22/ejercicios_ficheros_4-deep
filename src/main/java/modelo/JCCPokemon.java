@@ -10,4 +10,37 @@ public class JCCPokemon implements Serializable{
 	private List<Pokemon> pokemones;
 	private Date fechaLanzamiento;
 	private int numCartas;
+
+	public JCCPokemon(List<Pokemon> pokemones, Date fechaLanzamiento, int numCartas) {
+		this.pokemones = pokemones;
+		this.fechaLanzamiento = fechaLanzamiento;
+		this.numCartas = numCartas;
+	}
+
+	public JCCPokemon() {
+	}
+
+	public List<Pokemon> getPokemones() {
+		return pokemones;
+	}
+
+	public void setPokemones(List<Pokemon> pokemones) {
+		this.pokemones = pokemones;
+	}
+
+	public Date getFechaLanzamiento() {
+		return fechaLanzamiento;
+	}
+
+	public void setFechaLanzamiento(Date fechaLanzamiento) {
+		this.fechaLanzamiento = fechaLanzamiento;
+	}
+
+	public int getNumCartas() {
+		return numCartas;
+	}
+
+	public void setNumCartas(int numCartas) {
+		this.numCartas = numCartas;
+	}
 }
