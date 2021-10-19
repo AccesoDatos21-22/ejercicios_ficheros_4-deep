@@ -17,9 +17,10 @@ public class JCCPokemonJAXB implements JCCPokemonDAO {
 		try{
 			JAXBContext jaxbContext = JAXBContext.newInstance(JCCPokemon.class);
 			Unmarshaller unmarshaller=jaxbContext.createUnmarshaller();
-			pokemon= (JCCPokemon) unmarshaller.unmarshal(new InputStreamReader(new FileInputStream(ruta)));
+			pokemon= (JCCPokemon) unmarshaller.unmarshal(new File(ruta));
+			System.out.println(pokemon);
 		}
-		catch (JAXBException | FileNotFoundException e) {
+		catch (JAXBException e) {
 			e.printStackTrace();
 		}
 		return pokemon;
@@ -27,12 +28,13 @@ public class JCCPokemonJAXB implements JCCPokemonDAO {
 
 	@Override
 	public boolean guardar(JCCPokemon pokemones) {
+		File file=new File(ruta);
 		try {
 			JAXBContext jaxbContext = JAXBContext.newInstance(JCCPokemon.class);
 			Marshaller marshaller = jaxbContext.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			marshaller.marshal(pokemones, new OutputStreamWriter(new FileOutputStream(ruta)));
-		} catch (JAXBException | IOException e) {
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT,Boolean.TRUE);
+			marshaller.marshal(pokemones,file);
+		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
 		return true;

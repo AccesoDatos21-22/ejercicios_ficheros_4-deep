@@ -1,9 +1,15 @@
 package modelo;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+@XmlRootElement(name = "JCCpokemon")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class JCCPokemon implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -42,5 +48,14 @@ public class JCCPokemon implements Serializable{
 
 	public void setNumCartas(int numCartas) {
 		this.numCartas = numCartas;
+	}
+
+	@Override
+	public String toString() {
+		return "JCCPokemon{" +
+				"pokemones=" + pokemones +
+				", fechaLanzamiento=" + fechaLanzamiento +
+				", numCartas=" + numCartas +
+				'}';
 	}
 }

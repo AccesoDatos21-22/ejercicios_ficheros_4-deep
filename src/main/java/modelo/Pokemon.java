@@ -1,8 +1,14 @@
 package modelo;
 
+import jakarta.xml.bind.annotation.XmlAccessType;
+import jakarta.xml.bind.annotation.XmlAccessorType;
+import jakarta.xml.bind.annotation.XmlRootElement;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@XmlRootElement(name = "pokemon")
+@XmlAccessorType(XmlAccessType.PROPERTY)
 public class Pokemon implements Serializable {
 	private String name;
 	private int life;

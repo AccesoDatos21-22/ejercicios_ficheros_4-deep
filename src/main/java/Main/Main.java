@@ -1,46 +1,30 @@
 package Main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Date;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import dao.JCCPokemonJAXB;
-import modelo.JCCPokemon;
-import modelo.Pokemon;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
-import org.xml.sax.SAXException;
-
 import com.thoughtworks.xstream.XStream;
-
+import dao.JCCPokemonJAXB;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 import modelo.Empleado;
 import modelo.Empresa;
+import modelo.JCCPokemon;
+import modelo.Pokemon;
+import org.w3c.dom.*;
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.*;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 class Main {
 
@@ -49,12 +33,12 @@ class Main {
 	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
 
 	public static void main(String[] args) {
-		JCCPokemon jccPokemon=new JCCPokemon();
-		// ejemploJaxb();
-		// ejemploEscribirDOM();
-		// ejemploLeerDOM();
-		// ejemploEscribirXSTREAM();
-		// ejemploLeerXSTREAM();
+		ArrayList<Pokemon>pokemons=new ArrayList<>();
+		pokemons.add(new Pokemon("pikachu",10,11,12,13,14,15));
+		pokemons.add(new Pokemon("Blastoise",20,21,22,23,24,25));
+		Calendar calendar=Calendar.getInstance();
+		Date date=calendar.getTime();
+		JCCPokemon jccPokemon=new JCCPokemon(pokemons,date,3);
 		ArrayList<Pokemon>x=new ArrayList<>();
 		JCCPokemonJAXB j1 = new JCCPokemonJAXB();
 		j1.guardar(jccPokemon);
