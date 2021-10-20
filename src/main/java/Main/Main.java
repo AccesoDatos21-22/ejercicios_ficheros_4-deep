@@ -33,6 +33,7 @@ import org.xml.sax.SAXException;
 import com.thoughtworks.xstream.XStream;
 
 import dao.FarmaciaDOM;
+import dao.FarmaciaXSTREAM;
 import dao.MedicamentoAleatorio;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -67,24 +68,17 @@ class Main {
 		Medicamento md2=new Medicamento(1,"Ibruprofeno", 16, 23, 140, 2, 1);
 		Medicamento md3=new Medicamento(2,"Acelerator", 10, 25, 137, 4, 20);
 		Medicamento md4=new Medicamento(3,"abecedari", 10, 5, 37, 4, 45);
-		Medicamento md6=new Medicamento(6,"Ibruprofeno", 16, 23, 140, 2, 1);
 		farmacia.guardar(md1);
 		farmacia.guardar(md2);
 		farmacia.guardar(md3);
 		farmacia.guardar(md4);
-		farmacia.guardar(md6);
 		
-		FarmaciaDOM dom = new FarmaciaDOM();
-		System.out.println(dom.guardar(farmacia));
-		dom.leer(Paths.get("Farmacia.xml"));
+		FarmaciaXSTREAM farmaciaX = new FarmaciaXSTREAM();
+		
+		System.out.println(farmaciaX.guardar(farmacia));
+		farmacia= farmaciaX.leer();
+		farmacia.leerTodos().forEach(e->System.out.println(e.toString()));
 
-//		MedicamentoAleatorio me = new MedicamentoAleatorio();
-//		me.guardar(md2);
-//		me.guardar(md3);
-//		me.guardar(md4);
-//		me.guardar(md6);
-//		me.actualizar(new Medicamento(0,"sg fgr8gf", 14, 5, 17, 5, 5));
-//		me.leerTodos().forEach(e->System.out.println(e));
 	}
 
 	private static void ejemploEscribirXSTREAM() {
