@@ -23,6 +23,7 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 import dao.MedicamentoAleatorio;
+import dao.PrediccionDOM;
 import modelo.Medicamento;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
@@ -53,6 +54,8 @@ class Main {
 		// ejemploLeerDOM();
 		// ejemploEscribirXSTREAM();
 		// ejemploLeerXSTREAM();
+		PrediccionDOM prediccionDOM=new PrediccionDOM();
+		prediccionDOM.leer(PrediccionDOM.ruta);
 	}
 
 	private static void ejemploEscribirXSTREAM() {
