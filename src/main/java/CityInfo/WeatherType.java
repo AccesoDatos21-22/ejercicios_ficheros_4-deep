@@ -40,6 +40,12 @@ public class WeatherType implements Serializable{
 	public void setIcon(String icon) {
 		this.icon = icon;
 	}
+
+	@Override
+	public String toString() {
+		return "WeatherType [main=" + main + ", description=" + description + "]";
+	}
+	
 	
 	
 }

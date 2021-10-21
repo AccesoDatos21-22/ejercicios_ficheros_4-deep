@@ -1,6 +1,7 @@
 package CityInfo;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class DataObject implements Serializable {
 	private String dt,sunrise,sunset;
@@ -92,6 +93,14 @@ public class DataObject implements Serializable {
 	public void setPop(String pop) {
 		this.pop = pop;
 	}
+
+	@Override
+	public String toString() {
+		return "[dt=" + dt + ", Amanecer=" + sunrise + ", Atardecer=" + sunset + ", Temperatura=" + temp+",\nPresion=" + pressure + ", Humedad=" + humidity + ", Tiempo="
+				+ Arrays.toString(weather) + ", Velocidad=" + speed + ", deg=" + deg + ", gust=" + gust + ", Nubes="
+				+ clouds + ", pop=" + pop + "]\n ******************\n";
+	}
+	
 	
 	
 }

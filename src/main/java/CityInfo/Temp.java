@@ -8,6 +8,14 @@ public class Temp implements Serializable{
 	public Temp() {
 		
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Temp [day=" + day + ", min=" + min + ", max=" + max + ", night=" + night + ", eve=" + eve + ", morn="
+				+ morn + "]";
+	}
+
 
 	public String getDay() {
 		return day;

@@ -2,6 +2,8 @@ package Main;
 
 import com.google.gson.Gson;
 
+import CityInfo.City;
+import CityInfo.DataObject;
 import CityInfo.General;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -30,6 +32,14 @@ public class WeatherGetter {
 
 	}
 	public void getData() {
-		System.out.println("El tiempo en "+ general.getCity().getName() );
+		City city= general.getCity();
+		DataObject[] datas= general.getList();
+		
+		System.out.println("El tiempo en "+ city.getName()+", con id:" + city.getId() +", STATUS:"+general.getCod());
+		System.out.println("Cambios:\n***********************");
+		for(int i=0;i<datas.length;i++) {
+			System.out.println(datas[i].toString());
+		}
+		
 	}
 }

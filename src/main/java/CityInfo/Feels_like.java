@@ -7,6 +7,13 @@ public class Feels_like  implements Serializable{
 	public Feels_like() {
 		
 	}
+	
+
+	@Override
+	public String toString() {
+		return "Feels_like [daty=" + daty + ", night=" + night + ", eve=" + eve + ", morn=" + morn + "]";
+	}
+
 
 	public String getDaty() {
 		return daty;
