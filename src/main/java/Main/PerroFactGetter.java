@@ -16,14 +16,17 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class PerroFactGetter implements Serializable {
+
+	/**
+	 * @author Oscar Gonzalez
+	 **/
 	private static final long serialVersionUID = 1L;
 	private static final String web = "https://dog-facts-api.herokuapp.com/api/v1/resources/dogs?index=";
-	
-	//Devuelve una cita sobre Perros de manera aleatoria
+
+	// Devuelve una cita sobre Perros de manera aleatoria
 
 	public PerroFactGetter() {
-		
-	
+
 	}
 
 	public void load() {
@@ -39,9 +42,10 @@ public class PerroFactGetter implements Serializable {
 			System.err.println("Erro al leer api");
 		}
 	}
+
 	public static String getRandom() {
 		Random ran = new Random();
-		String num= String.valueOf(ran.nextInt(300));
+		String num = String.valueOf(ran.nextInt(300));
 		return num;
 	}
 

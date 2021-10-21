@@ -10,6 +10,9 @@ import java.util.List;
 import modelo.Medicamento;
 
 public class MedicamentoAleatorio implements MedicamentoDAO {
+	/**
+	 * @author Oscar Gonzalez
+	 **/
 
 	public final static int TAM_NOMBRE = 30;
 	public final static int TAM_REGISTRO = 88;

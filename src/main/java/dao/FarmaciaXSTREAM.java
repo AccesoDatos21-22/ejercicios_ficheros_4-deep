@@ -13,6 +13,10 @@ import modelo.Farmacia;
 import modelo.Medicamento;
 
 public class FarmaciaXSTREAM implements FarmaciaDAO {
+	
+	/**
+	 * @autor Oscar Gonzalez
+	 **/
 
 	final static String rutaFarmcia = "farmaciaX.xml"; // localizacion del fichero XML
 

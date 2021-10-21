@@ -7,7 +7,7 @@ import java.util.Objects;
 public class Medicamento implements Serializable {
 	
 	/**
-	 * @author Radek Leckston
+	 * @author Radek Lekston
 	 */
 	private static final long serialVersionUID = 1L;
 

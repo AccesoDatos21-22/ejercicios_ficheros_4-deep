@@ -30,6 +30,9 @@ import modelo.Farmacia;
 import modelo.Medicamento;
 
 public class FarmaciaDOM {
+	/**
+	 * @author Oscar Gonzalez
+	 */
 
 	public boolean leer(Path farmaciaXML) {
 		try {

@@ -9,6 +9,9 @@ import modelo.JCCPokemon;
 import java.io.*;
 
 
+/**
+ * @author Radek Lekston
+ **/
 public class JCCPokemonJAXB implements JCCPokemonDAO {
 	private final String ruta="pokemon.xml";
 	@Override
