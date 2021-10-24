@@ -26,7 +26,7 @@
             <feels_like day="16.23" night="13.01" eve="14.42" morn="12.15" unit="celsius" />
             <pressure unit="hPa" value="1020" />
             <humidity value="51" unit="%" />
-            <clouds value="broken clouds" all="66" unit="%"></clouds>>
+            <clouds value="broken clouds" all="66" unit="%"/>>
         </time>
         <time day="2021-10-22">
             <sun rise="2021-10-22T06:34:35" set="2021-10-22T17:26:03" />

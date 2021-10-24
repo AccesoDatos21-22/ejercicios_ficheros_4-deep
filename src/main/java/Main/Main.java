@@ -22,9 +22,6 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
-import dao.MedicamentoAleatorio;
-import dao.PrediccionDOM;
-import modelo.Medicamento;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -47,15 +44,15 @@ class Main {
 	private static final String JAXB_XML_FILE = "xml/EmpresaJAXB.xml";
 	private static final String XSTREAM_XML_FILE = "xml/EmpresaXTREAM.xml";
 	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
-
+	private static final String TIEMPO_XML_RUTA="src/tiempo.xml";
 	public static void main(String[] args) {
 		// ejemploJaxb();
 		// ejemploEscribirDOM();
 		// ejemploLeerDOM();
 		// ejemploEscribirXSTREAM();
 		// ejemploLeerXSTREAM();
-		PrediccionDOM prediccionDOM=new PrediccionDOM();
-		prediccionDOM.leer(PrediccionDOM.ruta);
+		Prediccion prediccion=new Prediccion();
+		prediccion.leer(TIEMPO_XML_RUTA);
 	}
 
 	private static void ejemploEscribirXSTREAM() {
