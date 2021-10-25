@@ -53,6 +53,7 @@ class Main {
 	private static final String JAXB_XML_FILE = "xml/EmpresaJAXB.xml";
 	private static final String XSTREAM_XML_FILE = "xml/EmpresaXTREAM.xml";
 	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
+	private static final String TIEMPO_XML_RUTA="src/Tiempo.xml";
 
 	public final static String ruta = "medicamentosRandom.txt";
 
@@ -89,6 +90,9 @@ class Main {
 		JCCPokemonJAXB j1 = new JCCPokemonJAXB();
 		j1.guardar(jccPokemon);
 		j1.leer();
+		//Ejercicio7
+		Prediccion prediccion=new Prediccion();
+		prediccion.leer(TIEMPO_XML_RUTA);
 
 		// Leer tiempo en una ciudad via JSON
 		WeatherGetter wg = new WeatherGetter("Collado Villalba");
