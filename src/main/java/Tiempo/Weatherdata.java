@@ -51,7 +51,7 @@ public class Weatherdata {
                 ", meta=" + meta +
                 ", sun=" + sun +
                 ", forecast=" + forecast +
-                '}';
+                '}'+"\n";
     }
 
     public void setMeta(Meta value) {
