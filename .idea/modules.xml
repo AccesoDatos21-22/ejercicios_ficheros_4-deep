@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.iml" filepath="$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.test.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/Ejercicios1.4XML.lib.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Ejercicios1.4XML.test.iml" />
+    </modules>
+  </component>
+</project>

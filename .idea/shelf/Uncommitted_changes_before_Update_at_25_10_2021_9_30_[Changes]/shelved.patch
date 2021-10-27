@@ -1,0 +1,38 @@
+Index: src/main/java/dao/PrediccionDOM.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dao;\r\n\r\nimport org.w3c.dom.Document;\r\nimport org.w3c.dom.Element;\r\nimport org.w3c.dom.Node;\r\nimport org.w3c.dom.NodeList;\r\nimport org.w3c.dom.traversal.DocumentTraversal;\r\nimport org.w3c.dom.traversal.NodeFilter;\r\nimport org.w3c.dom.traversal.NodeIterator;\r\nimport org.xml.sax.SAXException;\r\n\r\nimport javax.xml.parsers.DocumentBuilder;\r\nimport javax.xml.parsers.DocumentBuilderFactory;\r\nimport javax.xml.parsers.ParserConfigurationException;\r\nimport java.io.IOException;\r\n\r\npublic class PrediccionDOM {\r\n    public static final String ruta=\"src/tiempo.xml\";\r\n    public boolean leer(String ruta){\r\n        DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();\r\n        try {\r\n            DocumentBuilder builder=factory.newDocumentBuilder();\r\n            Document document=builder.parse(ruta);\r\n            DocumentTraversal trav= (DocumentTraversal) document;\r\n            MyFilter filter=new MyFilter();\r\n            NodeIterator it=trav.createNodeIterator(document.getDocumentElement(),NodeFilter.SHOW_ELEMENT,filter,true);\r\n            for (Node node=it.nextNode();node!=null;node=it.nextNode()){\r\n                NodeList lista= node.getChildNodes();\r\n                String dia=node.getAttributes().getNamedItem(\"day\").getNodeValue();\r\n                String text=node.getTextContent().trim().replaceAll(\"\\\\s+\",\" \");\r\n                for (int i = 0; i < lista.getLength(); i++) {\r\n                    \r\n                }\r\n                System.out.printf(\"%s: %s%n\",dia,text);\r\n            }\r\n        } catch (ParserConfigurationException | SAXException | IOException e) {\r\n            e.printStackTrace();\r\n        }\r\n\r\n        return false;\r\n    }\r\n    static class MyFilter implements NodeFilter {\r\n        @Override\r\n        public short acceptNode(Node thisNode){\r\n            if (thisNode.getNodeType()==Node.ELEMENT_NODE){\r\n                Element e= (Element) thisNode;\r\n                String nodeName= e.getNodeName();\r\n                if (\"time\".equals(nodeName)){\r\n                    return NodeFilter.FILTER_ACCEPT;\r\n                }\r\n            }\r\n            return  NodeFilter.FILTER_REJECT;\r\n        }\r\n    }\r\n}\r\n
+===================================================================
+diff --git a/src/main/java/dao/PrediccionDOM.java b/src/main/java/dao/PrediccionDOM.java
+--- a/src/main/java/dao/PrediccionDOM.java	
++++ b/src/main/java/dao/PrediccionDOM.java	
+@@ -1,9 +1,6 @@
+ package dao;
+ 
+-import org.w3c.dom.Document;
+-import org.w3c.dom.Element;
+-import org.w3c.dom.Node;
+-import org.w3c.dom.NodeList;
++import org.w3c.dom.*;
+ import org.w3c.dom.traversal.DocumentTraversal;
+ import org.w3c.dom.traversal.NodeFilter;
+ import org.w3c.dom.traversal.NodeIterator;
+@@ -26,12 +23,15 @@
+             NodeIterator it=trav.createNodeIterator(document.getDocumentElement(),NodeFilter.SHOW_ELEMENT,filter,true);
+             for (Node node=it.nextNode();node!=null;node=it.nextNode()){
+                 NodeList lista= node.getChildNodes();
++                String atributos="";
+                 String dia=node.getAttributes().getNamedItem("day").getNodeValue();
+-                String text=node.getTextContent().trim().replaceAll("\\s+"," ");
+                 for (int i = 0; i < lista.getLength(); i++) {
+-                    
++                    NamedNodeMap attrs = lista.item(i).getAttributes();
++                    for (int j = 0; j < attrs.getLength(); j++) {
++                        atributos= (((Attr)attrs.item(i)).getName());
++                    }
+                 }
+-                System.out.printf("%s: %s%n",dia,text);
++                System.out.println("%s"+dia+"%s%n"+atributos);
+             }
+         } catch (ParserConfigurationException | SAXException | IOException e) {
+             e.printStackTrace();

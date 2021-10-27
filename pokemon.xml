@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<JCCpokemon>
+    <fechaLanzamiento>2021-10-21T16:53:58.386+02:00</fechaLanzamiento>
+    <numCartas>3</numCartas>
+    <pokemones>
+        <atack>11</atack>
+        <defense>12</defense>
+        <life>10</life>
+        <name>pikachu</name>
+        <specialAttack>13</specialAttack>
+        <specialdefense>14</specialdefense>
+        <speed>15</speed>
+    </pokemones>
+    <pokemones>
+        <atack>21</atack>
+        <defense>22</defense>
+        <life>20</life>
+        <name>Blastoise</name>
+        <specialAttack>23</specialAttack>
+        <specialdefense>24</specialdefense>
+        <speed>25</speed>
+    </pokemones>
+</JCCpokemon>
