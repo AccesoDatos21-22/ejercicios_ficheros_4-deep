@@ -17,6 +17,7 @@ repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
     jcenter()
+    mavenCentral()
 }
 
 dependencies {
@@ -25,11 +26,12 @@ dependencies {
 
     // This dependency is used internally, and not exposed to consumers on their own compile classpath.
     implementation 'com.google.guava:guava:28.0-jre'
+    implementation 'org.testng:testng:7.1.0'
 
     // Use JUnit test framework
-    testImplementation 'junit:junit:4.12'       
+    testImplementation 'junit:junit:4.13.2'
 
-	//implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.2'
+    //implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '2.3.2'
     implementation group: 'jakarta.xml.bind', name: 'jakarta.xml.bind-api', version: '3.0.0'
     
     // https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl
