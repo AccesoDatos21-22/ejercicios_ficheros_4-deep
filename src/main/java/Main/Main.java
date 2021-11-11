@@ -23,6 +23,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import java.util.Random;
 
 import dao.MedicamentoAleatorio;
 import modelo.Medicamento;
@@ -51,6 +52,7 @@ import modelo.Farmacia;
 import modelo.JCCPokemon;
 import modelo.Medicamento;
 import modelo.Pokemon;
+import modelo.GetFacts;
 
 class Main {
 	public final static String ruta = "medicamentosRandom.txt";
@@ -102,7 +104,7 @@ class Main {
 		wg.loadInfo();
 		wg.showData();
 
-		
+
 
 		Thread.sleep(2000);
 		PerroFactGetter perros = new PerroFactGetter();
@@ -248,94 +250,6 @@ class Main {
 			for (int i = 1; i < 10; i++) {
 				Element raiz = document.createElement("empleado");
 
-				document.getDocumentElement().appendChild(raiz);
-
-				CrearElemento("id", Integer.toString(i), raiz, document);
-				CrearElemento("nombre", "Empleado " + i, raiz, document);
-				CrearElemento("dep", "01", raiz, document);
-				CrearElemento("salario", "1000.0", raiz, document);
-			}
-
-			// Creamos la fuente XML a partir del documento
-			Source source = new DOMSource(document);
-			// Creamos el resultado en el fichero Empleados.xml
-			Result result = new StreamResult(new java.io.File(DOM_XML_FILE));
-			// Obtenemos un TransformerFactory
-			Transformer transformer = TransformerFactory.newInstance().newTransformer();
-			// Le damos formato y realizamos la transformación del documento a fichero
-			transformer.setOutputProperty(OutputKeys.INDENT, "yes");
-			transformer.setOutputProperty(OutputKeys.METHOD, "xml");
-			transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "4");
-			transformer.transform(source, result);
-			// Mostramos el documento por pantalla especificando el canal de salida el
-			// System.out
-			Result console = new StreamResult(System.out);
-
-			transformer.transform(source, console);
-		} catch (TransformerException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
 	}
 
-	static void CrearElemento(String datoEmple, String valor, Element raiz, Document document) {
-		Element elem = document.createElement(datoEmple);
-		Text text = document.createTextNode(valor);
-		raiz.appendChild(elem);
-		elem.appendChild(text);
-	}
-
-	private static void ejemploJaxb() {
-		long time = System.currentTimeMillis();
-		System.out.println("Inicio: " + new Date(time));
-		Empresa cc = new Empresa();
-		cc.setIdEmpresa(1);
-		cc.setDireccion("En la nube");
-		cc.setNombreEmpresa("IES");
-		cc.setNumEmpleados(10);
-
-		ArrayList<Empleado> alCU = new ArrayList<Empleado>();
-		int init = 20000;
-		for (int i = 1; i < 10; i++) {
-			Empleado cu = new Empleado();
-			cu.setId(i);
-			cu.setActivo(true);
-			cu.setNumeroEmpl(init++);
-			cu.setNombre("Empleado " + i);
-			cu.setTitulo("SW Architect");
-			cu.setFechaAlta(new Date(System.currentTimeMillis()));
-
-			alCU.add(cu);
-		}
-
-		cc.setEmpleados(alCU);
-
-		JAXBContext context;
-		try {
-			context = JAXBContext.newInstance(Empresa.class);
-
-			// Si las clases a serializar están en otro paquete se indica el paquete
-			// al crear el marshall
-			Marshaller marshaller = context.createMarshaller();
-			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-			// Provincia provincia = fillProvincia();
-			// Mostramos el documento XML generado por la salida estandar
-			marshaller.marshal(cc, System.out);
-			// guardamos el objeto serializado en un documento XML
-			marshaller.marshal(cc, Files.newOutputStream(Paths.get(JAXB_XML_FILE)));
-			Unmarshaller unmarshaller = context.createUnmarshaller();
-			// Deserealizamos a partir de un documento XML
-			Empresa empresa = (Empresa) unmarshaller.unmarshal(Files.newInputStream(Paths.get(JAXB_XML_FILE)));
-			System.out.println("********* Empresa cargado desde fichero XML***************");
-			// Mostramos por linea de comandos el objeto Java obtenido
-			// producto de la deserialziacion
-			marshaller.marshal(empresa, System.out);
-		} catch (JAXBException | IOException e) {
-			e.printStackTrace();
-		}
-	}
 }
