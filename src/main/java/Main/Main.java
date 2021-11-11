@@ -1,9 +1,11 @@
 package Main;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
+import dao.JCCPokemonJAXB;
+import dao.MedicamentoAleatorio;
+import modelo.JCCPokemon;
+import modelo.Medicamento;
+import modelo.Pokemon;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -12,54 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Result;
-import javax.xml.transform.Source;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-import java.util.Random;
-
-import dao.MedicamentoAleatorio;
-import modelo.Medicamento;
-import org.w3c.dom.DOMImplementation;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.dom.Text;
-import org.xml.sax.SAXException;
-
-import com.thoughtworks.xstream.XStream;
-
-import dao.FarmaciaXSTREAM;
-import dao.JCCPokemonJAXB;
-import dao.FarmaciaDOM;
-import dao.FarmaciaXSTREAM;
-import dao.MedicamentoAleatorio;
-import jakarta.xml.bind.JAXBContext;
-import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Marshaller;
-import jakarta.xml.bind.Unmarshaller;
-import modelo.Empleado;
-import modelo.Empresa;
-import modelo.Farmacia;
-import modelo.JCCPokemon;
-import modelo.Medicamento;
-import modelo.Pokemon;
-import modelo.GetFacts;
-
 class Main {
 	public final static String ruta = "medicamentosRandom.txt";
 
-	private static final String JAXB_XML_FILE = "xml/EmpresaJAXB.xml";
-	private static final String XSTREAM_XML_FILE = "xml/EmpresaXTREAM.xml";
-	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
 	private static final String TIEMPO_XML_RUTA="src/Tiempo.xml";
 
 	public static void main(String[] args) throws InterruptedException {
@@ -80,10 +37,10 @@ class Main {
 		me.guardar(md3);
 		me.guardar(md4);
 		me.guardar(md5);
-		System.out.println(me.actualizar(new Medicamento("Prueba02", 04, 4, 5, 17, 15, 5)));
+		System.out.println(me.actualizar(new Medicamento("Prueba02", 4, 4, 5, 17, 15, 5)));
 		System.out.println(me.borrar(md4));
 		System.out.println(me.buscar("Ibruprofeno").toString());
-		me.leerTodos().forEach(e -> System.out.println(e));
+		me.leerTodos().forEach(System.out::println);
 
 		ArrayList<Pokemon> pokemons = new ArrayList<>();
 		pokemons.add(new Pokemon("pikachu", 10, 11, 12, 13, 14, 15));
@@ -91,7 +48,6 @@ class Main {
 		Calendar calendar = Calendar.getInstance();
 		Date date = calendar.getTime();
 		JCCPokemon jccPokemon = new JCCPokemon(pokemons, date, 3);
-		ArrayList<Pokemon> x = new ArrayList<>();
 		JCCPokemonJAXB j1 = new JCCPokemonJAXB();
 		j1.guardar(jccPokemon);
 		j1.leer();
@@ -122,134 +78,4 @@ class Main {
 		sc.close();
 
 	}
-
-	private static void ejemploEscribirXSTREAM() {
-
-		try {
-
-			System.out.println("Comienza el proceso de creación del fichero a XML...");
-
-			XStream xstream = new XStream();
-
-			long time = System.currentTimeMillis();
-			System.out.println("Inicio: " + new Date(time));
-			Empresa cc = new Empresa();
-			cc.setIdEmpresa(1);
-			cc.setDireccion("En la nube");
-			cc.setNombreEmpresa("IES");
-			cc.setNumEmpleados(10);
-
-			ArrayList<Empleado> alCU = new ArrayList<Empleado>();
-			int init = 20000;
-			for (int i = 1; i < 10; i++) {
-				Empleado cu = new Empleado();
-				cu.setId(i);
-				cu.setActivo(true);
-				cu.setNumeroEmpl(init++);
-				cu.setNombre("Empleado " + i);
-				cu.setTitulo("SW Architect");
-				cu.setFechaAlta(new Date(System.currentTimeMillis()));
-
-				alCU.add(cu);
-			}
-
-			cc.setEmpleados(alCU);
-
-			// cambiar de nombre a las etiquetas XML
-			xstream.alias("Empleado", Empleado.class);
-			xstream.alias("Empresa", Empresa.class);
-
-			// quitar etiqueta lista (Atributo de la clase ListaEmpleados)
-			xstream.addImplicitCollection(Empresa.class, "Empresa");
-			// Insertar los objetos en XML
-			xstream.toXML(cc, new FileOutputStream(XSTREAM_XML_FILE));
-			System.out.println("Creado fichero XML....");
-
-		} catch (IOException e) {
-			System.err.println("Error: " + e);
-		}
-	}
-
-	private static void ejemploLeerXSTREAM() {
-		Empresa empresa = new Empresa();
-		try {
-			Class<?>[] classes = new Class[] { Empresa.class, Empleado.class };
-
-			XStream xstream = new XStream();
-			// XStream.setupDefaultSecurity(xstream);
-			// xstream.allowTypes(classes);
-
-			xstream.alias("Empresa", Empresa.class);
-			xstream.alias("Empleado", Empleado.class);
-			xstream.addImplicitCollection(Empresa.class, "Empresa");
-
-			empresa = (Empresa) xstream.fromXML(new FileInputStream(XSTREAM_XML_FILE));
-
-			for (Empleado e : empresa.getEmpleados()) {
-				System.out.println(e);
-			}
-
-		} catch (FileNotFoundException e) {
-			System.err.println("Error: " + e);
-		}
-
-	}
-
-	private static void ejemploLeerDOM() {
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-		DocumentBuilder builder;
-		try {
-			builder = factory.newDocumentBuilder();
-
-			Document document = builder.parse(new File(DOM_XML_FILE));
-			document.getDocumentElement().normalize();
-
-			// Obtenemos la lista de nodos con nombre empleado de todo el documento
-			NodeList empleados = document.getElementsByTagName("empleado");
-
-			for (int i = 0; i < empleados.getLength(); i++) {
-				Node emple = empleados.item(i); // obtener un nodo
-				if (emple.getNodeType() == Node.ELEMENT_NODE) {
-					Element elemento = (Element) emple; // tipo de nodo
-					System.out.println("ID: " + getNodo("id", elemento));
-					System.out.println("Apellido: " + getNodo("nombre", elemento));
-					System.out.println("Departamento: " + getNodo("dep", elemento));
-					System.out.println("Salario: " + getNodo("salario", elemento));
-				}
-			}
-
-		} catch (ParserConfigurationException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	// obtener información de un nodo
-	private static String getNodo(String etiqueta, Element elem) {
-		NodeList nodo = elem.getElementsByTagName(etiqueta).item(0).getChildNodes();
-		Node valornodo = (Node) nodo.item(0);
-		return valornodo.getNodeValue(); // devuelve el valor del nodo
-	}
-
-	private static void ejemploEscribirDOM() {
-		try {
-			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
-			DocumentBuilder builder = factory.newDocumentBuilder();
-
-			DOMImplementation implementation = builder.getDOMImplementation();
-
-			Document document = implementation.createDocument(null, "Empleados", null);
-			document.setXmlVersion("1.0"); // asignamos la version de nuestro XML
-
-			for (int i = 1; i < 10; i++) {
-				Element raiz = document.createElement("empleado");
-
-	}
-
 }
