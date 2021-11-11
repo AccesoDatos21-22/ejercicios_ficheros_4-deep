@@ -1,1 +1,38 @@
-<farmacia/>
+<farmacia>
+  <medicamento>
+    <nombre>Paracetamol</nombre>
+    <precio>23.0</precio>
+    <cod>0</cod>
+    <stock>45</stock>
+    <stockMaximo>109</stockMaximo>
+    <stockMinimo>1</stockMinimo>
+    <codProveedor>0</codProveedor>
+  </medicamento>
+  <medicamento>
+    <nombre>Ibruprofeno</nombre>
+    <precio>16.0</precio>
+    <cod>1</cod>
+    <stock>23</stock>
+    <stockMaximo>140</stockMaximo>
+    <stockMinimo>2</stockMinimo>
+    <codProveedor>1</codProveedor>
+  </medicamento>
+  <medicamento>
+    <nombre>Acelerator</nombre>
+    <precio>10.0</precio>
+    <cod>2</cod>
+    <stock>25</stock>
+    <stockMaximo>137</stockMaximo>
+    <stockMinimo>4</stockMinimo>
+    <codProveedor>20</codProveedor>
+  </medicamento>
+  <medicamento>
+    <nombre>abecedari</nombre>
+    <precio>10.0</precio>
+    <cod>3</cod>
+    <stock>5</stock>
+    <stockMaximo>37</stockMaximo>
+    <stockMinimo>4</stockMinimo>
+    <codProveedor>45</codProveedor>
+  </medicamento>
+</farmacia>

@@ -38,6 +38,8 @@ import com.thoughtworks.xstream.XStream;
 
 import dao.FarmaciaXSTREAM;
 import dao.JCCPokemonJAXB;
+import dao.FarmaciaDOM;
+import dao.FarmaciaXSTREAM;
 import dao.MedicamentoAleatorio;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
@@ -51,13 +53,12 @@ import modelo.Medicamento;
 import modelo.Pokemon;
 
 class Main {
+	public final static String ruta = "medicamentosRandom.txt";
 
 	private static final String JAXB_XML_FILE = "xml/EmpresaJAXB.xml";
 	private static final String XSTREAM_XML_FILE = "xml/EmpresaXTREAM.xml";
 	private static final String DOM_XML_FILE = "xml/EmpleadosDOM.xml";
 	private static final String TIEMPO_XML_RUTA="src/Tiempo.xml";
-
-	public final static String ruta = "medicamentosRandom.txt";
 
 	public static void main(String[] args) throws InterruptedException {
 		try {
@@ -102,7 +103,7 @@ class Main {
 		wg.showData();
 
 		
-		
+
 		Thread.sleep(2000);
 		PerroFactGetter perros = new PerroFactGetter();
 		boolean quedarse = true;
