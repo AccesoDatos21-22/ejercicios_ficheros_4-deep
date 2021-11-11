@@ -1,0 +1,110 @@
+<weatherdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="tiempo.xsd">
+    <location>
+        <name>Galapagar</name>
+        <type />
+        <country>ES</country>
+        <timezone>7200</timezone>
+        <location altitude="0" latitude="40.5783" longitude="-4.0043" geobase="geonames" geobaseid="3121766" />
+    </location>
+    <credit />
+    <meta>
+        <lastupdate />
+        <calctime>0</calctime>
+        <nextupdate />
+    </meta>
+    <sun rise="2021-10-21T06:33:28" set="2021-10-21T17:27:28" />
+    <forecast>
+        <time day="2021-10-21">
+            <sun rise="2021-10-21T06:33:28" set="2021-10-21T17:27:28" />
+            <symbol number="803" name="broken clouds" var="04d" />
+            <precipitation probability="0" />
+            <windDirection deg="306" code="NW" name="Northwest" />
+            <windSpeed mps="3.87" unit="m/s" name="Gentle Breeze" />
+            <windGust gust="4.95" unit="m/s" />
+            <temperature day="17.13" min="13.18" max="18.54" night="14.13" eve="15.63" morn="13.18" unit="celsius" />
+            <feels_like day="16.23" night="13.01" eve="14.42" morn="12.15" unit="celsius" />
+            <pressure unit="hPa" value="1020" />
+            <humidity value="51" unit="%" />
+            <clouds value="broken clouds" all="66" unit="%"/>>
+        </time>
+        <time day="2021-10-22">
+            <sun rise="2021-10-22T06:34:35" set="2021-10-22T17:26:03" />
+            <symbol number="801" name="few clouds" var="02d" />
+            <precipitation probability="0" />
+            <windDirection deg="79" code="E" name="East" />
+            <windSpeed mps="4.97" unit="m/s" name="Gentle Breeze" />
+            <windGust gust="6.8" unit="m/s" />
+            <temperature day="16.96" min="11.03" max="18.21" night="12.48" eve="15.44" morn="11.18" unit="celsius" />
+            <feels_like day="15.73" night="11.19" eve="14.11" morn="10.05" unit="celsius" />
+            <pressure unit="hPa" value="1019" />
+            <humidity value="39" unit="%" />
+            <clouds value="few clouds" all="14" unit="%" />
+        </time>
+        <time day="2021-10-23">
+            <sun rise="2021-10-23T06:35:42" set="2021-10-23T17:24:39" />
+            <symbol number="800" name="sky is clear" var="01d" />
+            <precipitation probability="0" />
+            <windDirection deg="74" code="ENE" name="East-northeast" />
+            <windSpeed mps="3.05" unit="m/s" name="Light breeze" />
+            <windGust gust="4.95" unit="m/s" />
+            <temperature day="16.05" min="9.59" max="17.5" night="13.1" eve="14.29" morn="9.59" unit="celsius" />
+            <feels_like day="14.7" night="11.64" eve="12.87" morn="9.59" unit="celsius" />
+            <pressure unit="hPa" value="1021" />
+            <humidity value="38" unit="%" />
+            <clouds value="clear sky" all="0" unit="%" />
+        </time>
+        <time day="2021-10-24">
+            <sun rise="2021-10-24T06:36:50" set="2021-10-24T17:23:17" />
+            <symbol number="800" name="sky is clear" var="01d" />
+            <precipitation probability="0" />
+            <windDirection deg="206" code="SSW" name="South-southwest" />
+            <windSpeed mps="2.18" unit="m/s" name="Light breeze" />
+            <windGust gust="2.47" unit="m/s" />
+            <temperature day="16.99" min="10.75" max="18.24" night="13.85" eve="15.15" morn="10.75" unit="celsius" />
+            <feels_like day="15.58" night="12.39" eve="13.77" morn="9.19" unit="celsius" />
+            <pressure unit="hPa" value="1022" />
+            <humidity value="32" unit="%" />
+            <clouds value="clear sky" all="2" unit="%" />
+        </time>
+        <time day="2021-10-25">
+            <sun rise="2021-10-25T06:37:58" set="2021-10-25T17:21:55" />
+            <symbol number="800" name="sky is clear" var="01d" />
+            <precipitation probability="0" />
+            <windDirection deg="338" code="NNW" name="North-northwest" />
+            <windSpeed mps="1.57" unit="m/s" name="Calm" />
+            <windGust gust="1.74" unit="m/s" />
+            <temperature day="17.62" min="11.25" max="18.55" night="14.35" eve="15.64" morn="11.25" unit="celsius" />
+            <feels_like day="16.25" night="12.91" eve="14.25" morn="9.58" unit="celsius" />
+            <pressure unit="hPa" value="1021" />
+            <humidity value="31" unit="%" />
+            <clouds value="clear sky" all="2" unit="%" />
+        </time>
+        <time day="2021-10-26">
+            <sun rise="2021-10-26T06:39:07" set="2021-10-26T17:20:35" />
+            <symbol number="800" name="sky is clear" var="01d" />
+            <precipitation probability="0" />
+            <windDirection deg="54" code="NE" name="NorthEast" />
+            <windSpeed mps="2.35" unit="m/s" name="Light breeze" />
+            <windGust gust="3.94" unit="m/s" />
+            <temperature day="17.23" min="11.6" max="18.45" night="14.2" eve="15.5" morn="11.6" unit="celsius" />
+            <feels_like day="16.08" night="12.93" eve="14.31" morn="10.1" unit="celsius" />
+            <pressure unit="hPa" value="1022" />
+            <humidity value="41" unit="%" />
+            <clouds value="clear sky" all="3" unit="%" />
+        </time>
+        <time day="2021-10-27">
+            <sun rise="2021-10-27T06:40:16" set="2021-10-27T17:19:15" />
+            <symbol number="802" name="scattered clouds" var="03d" />
+            <precipitation probability="0" />
+            <windDirection deg="168" code="SSE" name="South-southeast" />
+            <windSpeed mps="1.98" unit="m/s" name="Light breeze" />
+            <windGust gust="1.63" unit="m/s" />
+            <temperature day="17.42" min="11.04" max="18.36" night="13.89" eve="15.3" morn="11.04" unit="celsius" />
+            <feels_like day="16.21" night="12.69" eve="14.11" morn="9.71" unit="celsius" />
+            <pressure unit="hPa" value="1022" />
+            <humidity value="38" unit="%" />
+            <clouds value="scattered clouds" all="31" unit="%" />
+        </time>
+    </forecast>
+</weatherdata>
