@@ -1,5 +1,4 @@
-<weatherdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:noNamespaceSchemaLocation="tiempo.xsd">
+<weatherdata xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <location>
         <name>Galapagar</name>
         <type />
